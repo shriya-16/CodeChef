@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int amount;
+	float accountBalance;
+	cin>>amount>>accountBalance;
+	if(amount < accountBalance-0.50 && amount%5==0){
+	    accountBalance -= (amount + 0.50);
+	}
+	printf("%.2f",accountBalance);
+	return 0;
+}
