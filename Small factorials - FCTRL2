@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int T, n, m;
+	cin>>T;            
+	while(T > 0){
+	    cin>>n;
+	    int arr[200], temp = 0;
+	    m = 1;
+	    arr[0] = 1;
+	    for(int i = 1; i <= n; i++){               //To store the answer
+	        for(int j = 0; j < m; j++){
+	            arr[j] = arr[j]*i + temp;
+	            temp = arr[j]/10;
+	            arr[j] %= 10;
+	           
+	        }    
+	        while(temp){
+	            arr[m] = temp%10;
+	            m++;
+	            temp = temp/10;
+	        }
+	    }
+	    for(int i = m-1; i >= 0; i--)
+	        cout<<arr[i];
+	    cout<<endl;
+	    T--;
+	}
+	return 0;
+}
