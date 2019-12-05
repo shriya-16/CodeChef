@@ -1,0 +1,58 @@
+Example Input
+
+2
+3
+abc 0
+abc 1
+efg 1
+7
+fck 1
+fck 0
+fck 1
+body 0
+body 0
+body 0
+ram 0
+
+Example Output
+
+2
+6
+
+Explanation
+
+Example case 1: You can include either of the first and the second item, but not both. The third item can also be taken. This way the training set can contain at the very max 2 items.
+
+Example case 2: You can include all the items except the second item in the training set
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(void){
+    
+    unordered_map<string, pair<int,int>> data;
+    int T;
+    cin>>T;
+    while(T > 0){
+    	data.clear();
+        int n, spam;
+        string word;
+        cin>>n;
+        for(int i = 0; i < n; i++){
+            cin>>word;
+            cin>>spam;
+            if(spam == 0)
+                data[word].first += 1;
+            else
+                data[word].second += 1;
+        }
+        long long count = 0;
+        for(auto record: data){
+            count += max((record.second).first,(record.second).second);
+        }
+        cout<<count<<endl;
+        T--;
+    }
+    return 0;
+    
+}
