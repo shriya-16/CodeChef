@@ -1,0 +1,45 @@
+//Remove a digit so that from given number such that resulting number is minimum
+Example Input
+
+3
+21
+132
+104
+
+Example Output
+
+1
+12
+4
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(void){
+    
+    int T;
+    cin>>T;
+    while(T > 0){
+        vector <int> a;
+        int n;
+        bool f = false;
+        cin>>n;
+        while(n){
+            a.push_back(n%10);
+            n = n/10;
+        }
+        for(int i = a.size()-1; i >= 0; i--){
+            if(a[i] > a[i-1] && !f){
+                f = true;
+                continue;
+            }
+            n = n*10;
+            n += a[i];
+        }
+        cout<<n<<endl;
+        T--;
+    }
+    return 0;
+    
+}
